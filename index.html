@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Afzu 🎂</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose:    #f43f6e;
+      --blush:   #fda4af;
+      --cream:   #fff1f2;
+      --gold:    #f59e0b;
+      --dark:    #1e0a14;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(ellipse at top, #2d0a20 0%, #0f0612 100%);
+      font-family: 'Lato', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Stars ── */
+    #stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: #fff;
+      animation: twinkle var(--d) ease-in-out infinite alternate;
+      opacity: 0;
+    }
+    @keyframes twinkle { to { opacity: var(--op); transform: scale(1.4); } }
+
+    /* ── Floating petals ── */
+    .petal {
+      position: fixed;
+      top: -60px;
+      font-size: 1.4rem;
+      animation: fall var(--fd) linear infinite;
+      opacity: 0.75;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes fall {
+      0%   { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* ── Main card ── */
+    .card {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 3rem 2.5rem 3.5rem;
+      max-width: 680px;
+      width: 92%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 2rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 80px rgba(244,63,110,0.25), 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .to-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 0.5rem;
+    }
+
+    .name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 10vw, 5.5rem);
+      font-style: italic;
+      line-height: 1;
+      background: linear-gradient(135deg, #fda4af 20%, #f43f6e 60%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.4rem;
+      filter: drop-shadow(0 0 18px rgba(244,63,110,0.6));
+    }
+
+    .sub {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2.8rem;
+    }
+
+    /* ── Countdown ── */
+    .countdown-grid {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.8rem;
+    }
+
+    .unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .digit-wrap {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      border-radius: 1rem;
+      background: linear-gradient(145deg, rgba(244,63,110,0.18), rgba(245,158,11,0.1));
+      border: 1px solid rgba(244,63,110,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .digit-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.07) 0%, transparent 50%);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .digit {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1;
+      color: #fff;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .digit.flip {
+      animation: flip 0.25s ease;
+    }
+    @keyframes flip {
+      0%   { opacity: 1; transform: translateY(0); }
+      40%  { opacity: 0; transform: translateY(-14px); }
+      60%  { opacity: 0; transform: translateY(14px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .unit-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── Separator dots ── */
+    .sep {
+      align-self: center;
+      font-size: 1.8rem;
+      color: var(--rose);
+      margin-bottom: 1.4rem;
+      animation: pulse 1s ease-in-out infinite alternate;
+    }
+    @keyframes pulse { to { opacity: 0.3; } }
+
+    /* ── Message ── */
+    .message {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      line-height: 1.8;
+      color: rgba(255,255,255,0.78);
+      max-width: 480px;
+      margin: 0 auto 2rem;
+    }
+
+    .hearts-row {
+      font-size: 1.4rem;
+      letter-spacing: 0.3rem;
+      color: var(--rose);
+      animation: heartbeat 1.4s ease-in-out infinite;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.15); }
+    }
+
+    /* ── Birthday mode ── */
+    .birthday-banner {
+      display: none;
+    }
+    body.is-birthday .countdown-grid { display: none; }
+    body.is-birthday .birthday-banner {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 6vw, 3rem);
+      background: linear-gradient(135deg, #fda4af, #f43f6e, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+      background-size: 200%;
+      margin-bottom: 1.5rem;
+    }
+    @keyframes shimmer {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    /* ── Date badge ── */
+    .date-badge {
+      margin-top: 2.2rem;
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border-radius: 999px;
+      background: rgba(244,63,110,0.15);
+      border: 1px solid rgba(244,63,110,0.3);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--blush);
+    }
+
+    @media (max-width: 440px) {
+      .digit-wrap { width: 68px; height: 68px; }
+      .digit { font-size: 1.9rem; }
+      .countdown-grid { gap: 0.5rem; }
+      .sep { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="stars"></div>
+
+<div class="card" id="card">
+  <p class="to-label">A little something for</p>
+  <h1 class="name">Afzu</h1>
+  <p class="sub">the one who makes every day feel like a celebration</p>
+
+  <div class="birthday-banner" id="birthday-banner">
+    Happy Birthday, Afzu! 🎂✨
+  </div>
+
+  <div class="countdown-grid" id="countdown">
+    <div class="unit">
+      <div class="digit-wrap"><span class="digit" id="d-days">00</span></div>
+      <span class="unit-label">Days</span>
+    </div>
+    <div class="sep">:</div>
+    <div class="unit">
+      <div class="digit-wrap"><span class="digit" id="d-hours">00</span></div>
+      <span class="unit-label">Hours</span>
+    </div>
+    <div class="sep">:</div>
+    <div class="unit">
+      <div class="digit-wrap"><span class="digit" id="d-mins">00</span></div>
+      <span class="unit-label">Minutes</span>
+    </div>
+    <div class="sep">:</div>
+    <div class="unit">
+      <div class="digit-wrap"><span class="digit" id="d-secs">00</span></div>
+      <span class="unit-label">Seconds</span>
+    </div>
+  </div>
+
+  <p class="message" id="message">
+    Counting down every second until I get to celebrate you — the most wonderful person I know. Can't wait to make your day as special as you make mine every single day.
+  </p>
+
+  <div class="hearts-row">♥ ♥ ♥</div>
+  <div class="date-badge">May 9th — the best day of the year</div>
+</div>
+
+<script>
+  // ── Stars ──────────────────────────────────────────────
+  (function() {
+    const container = document.getElementById('stars');
+    for (let i = 0; i < 160; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      const size = Math.random() * 2.5 + 0.5;
+      s.style.cssText = `
+        left: ${Math.random()*100}%;
+        top:  ${Math.random()*100}%;
+        width: ${size}px;
+        height: ${size}px;
+        --d:  ${(Math.random()*3+1.5).toFixed(1)}s;
+        --op: ${(Math.random()*0.7+0.2).toFixed(2)};
+        animation-delay: ${(Math.random()*4).toFixed(2)}s;
+      `;
+      container.appendChild(s);
+    }
+  })();
+
+  // ── Petals ─────────────────────────────────────────────
+  (function() {
+    const emojis = ['🌸','🌹','💮','🌷','✿','❀'];
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      p.style.cssText = `
+        left: ${Math.random()*100}%;
+        --fd: ${(Math.random()*10+8).toFixed(1)}s;
+        animation-delay: ${(Math.random()*12).toFixed(1)}s;
+        font-size: ${(Math.random()*1+0.9).toFixed(1)}rem;
+      `;
+      document.body.appendChild(p);
+    }
+  })();
+
+  // ── Countdown ──────────────────────────────────────────
+  const elDays  = document.getElementById('d-days');
+  const elHours = document.getElementById('d-hours');
+  const elMins  = document.getElementById('d-mins');
+  const elSecs  = document.getElementById('d-secs');
+  const prevVals = { days: '', hours: '', mins: '', secs: '' };
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function flipIfChanged(el, key, val) {
+    const s = pad(val);
+    if (prevVals[key] !== s) {
+      el.classList.remove('flip');
+      void el.offsetWidth; // reflow
+      el.classList.add('flip');
+      el.textContent = s;
+      prevVals[key] = s;
+    }
+  }
+
+  function getBirthday() {
+    const now = new Date();
+    const bday = new Date(now.getFullYear(), 4, 9, 0, 0, 0); // May = month 4
+    if (now >= bday) bday.setFullYear(bday.getFullYear() + 1);
+    return bday;
+  }
+
+  function isBirthdayToday() {
+    const now = new Date();
+    return now.getMonth() === 4 && now.getDate() === 9;
+  }
+
+  function tick() {
+    if (isBirthdayToday()) {
+      document.body.classList.add('is-birthday');
+      document.getElementById('message').textContent =
+        "Today is YOUR day, Afzu. Wishing you all the love, joy and magic in the world. Happy Birthday! 🎉";
+      return;
+    }
+
+    const now   = new Date();
+    const diff  = getBirthday() - now;
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000) / 60000);
+    const secs  = Math.floor((diff % 60000) / 1000);
+
+    flipIfChanged(elDays,  'days',  days);
+    flipIfChanged(elHours, 'hours', hours);
+    flipIfChanged(elMins,  'mins',  mins);
+    flipIfChanged(elSecs,  'secs',  secs);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+</script>
+</body>
+</html>

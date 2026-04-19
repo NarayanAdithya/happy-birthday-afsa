@@ -233,6 +233,249 @@
       .countdown-grid { gap: 0.5rem; }
       .sep { font-size: 1.2rem; }
     }
+
+    /* ── Gift mystery card ── */
+    .gift-card {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2.8rem 2.5rem 3rem;
+      max-width: 680px;
+      width: 92%;
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+      background: rgba(245,158,11,0.05);
+      border: 1px solid rgba(245,158,11,0.18);
+      border-radius: 2rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 60px rgba(245,158,11,0.12), 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .gift-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .gift-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 5vw, 2.2rem);
+      font-style: italic;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .gift-sub {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 1.8rem;
+    }
+
+    /* gift arrival countdown */
+    .mini-countdown {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .mini-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .mini-digit-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 0.8rem;
+      background: linear-gradient(145deg, rgba(245,158,11,0.2), rgba(244,63,110,0.08));
+      border: 1px solid rgba(245,158,11,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mini-digit {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .mini-digit.flip { animation: flip 0.25s ease; }
+    .mini-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .mini-sep {
+      align-self: center;
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      opacity: 0.6;
+    }
+
+    .arrived-badge {
+      display: none;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+      animation: glowpulse 2s ease-in-out infinite alternate;
+    }
+    @keyframes glowpulse {
+      from { text-shadow: 0 0 6px rgba(245,158,11,0.4); }
+      to   { text-shadow: 0 0 22px rgba(245,158,11,0.9); }
+    }
+
+    /* divider */
+    .mystery-divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(245,158,11,0.5), transparent);
+      margin: 0 auto 1.8rem;
+    }
+
+    /* clue box */
+    .clue-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1rem;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1.4rem;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(0.92rem, 2.5vw, 1.05rem);
+      line-height: 1.8;
+      color: rgba(255,255,255,0.82);
+      min-height: 80px;
+      transition: all 0.4s ease;
+    }
+    .clue-label {
+      font-family: 'Lato', sans-serif;
+      font-style: normal;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,158,11,0.6);
+      margin-bottom: 0.6rem;
+    }
+
+    /* guess input */
+    .guess-row {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .guess-input {
+      flex: 1;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 0.75rem;
+      padding: 0.7rem 1rem;
+      color: #fff;
+      font-family: 'Lato', sans-serif;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .guess-input:focus { border-color: rgba(245,158,11,0.6); }
+    .guess-input::placeholder { color: rgba(255,255,255,0.3); }
+    .guess-input.shake { animation: shake 0.4s ease; }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      20%      { transform: translateX(-8px); }
+      40%      { transform: translateX(8px); }
+      60%      { transform: translateX(-5px); }
+      80%      { transform: translateX(5px); }
+    }
+
+    .guess-btn {
+      padding: 0.7rem 1.4rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, var(--gold), #e07b12);
+      border: none;
+      color: #fff;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+    .guess-btn:hover { opacity: 0.88; }
+    .guess-btn:active { transform: scale(0.96); }
+
+    .feedback-msg {
+      min-height: 1.4rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 0.6rem;
+      transition: color 0.3s;
+    }
+    .feedback-msg.wrong { color: #f87171; }
+    .feedback-msg.right { color: #4ade80; }
+
+    .attempt-pips {
+      display: flex;
+      gap: 0.4rem;
+      justify-content: center;
+      margin-bottom: 1.4rem;
+    }
+    .pip {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      transition: background 0.3s;
+    }
+    .pip.used { background: #f87171; }
+
+    .reveal-btn {
+      display: none;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.45);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      padding: 0.45rem 1.1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .reveal-btn:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+
+    /* solved state */
+    .solved-banner {
+      display: none;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 4vw, 1.6rem);
+      font-style: italic;
+      background: linear-gradient(135deg, #fde68a, #f59e0b, #f43f6e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+      background-size: 200%;
+      margin-bottom: 0.5rem;
+    }
+    .solved-sub {
+      display: none;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    @media (max-width: 440px) {
+      .mini-digit-wrap { width: 50px; height: 50px; }
+      .mini-digit { font-size: 1.4rem; }
+      .mini-countdown { gap: 0.4rem; }
+    }
   </style>
 </head>
 <body>
@@ -276,6 +519,66 @@
 
   <div class="hearts-row">♥ ♥ ♥</div>
   <div class="date-badge">May 9th — the best day of the year</div>
+</div>
+
+<!-- ── Gift Mystery Card ── -->
+<div class="gift-card">
+  <p class="gift-eyebrow">something is on its way</p>
+  <h2 class="gift-title">Your First Gift</h2>
+  <p class="gift-sub">arriving around April 22nd &mdash; can you figure out what it is?</p>
+
+  <!-- Mini arrival countdown -->
+  <div class="mini-countdown" id="gift-countdown">
+    <div class="mini-unit">
+      <div class="mini-digit-wrap"><span class="mini-digit" id="g-days">00</span></div>
+      <span class="mini-label">Days</span>
+    </div>
+    <div class="mini-sep">:</div>
+    <div class="mini-unit">
+      <div class="mini-digit-wrap"><span class="mini-digit" id="g-hours">00</span></div>
+      <span class="mini-label">Hours</span>
+    </div>
+    <div class="mini-sep">:</div>
+    <div class="mini-unit">
+      <div class="mini-digit-wrap"><span class="mini-digit" id="g-mins">00</span></div>
+      <span class="mini-label">Minutes</span>
+    </div>
+    <div class="mini-sep">:</div>
+    <div class="mini-unit">
+      <div class="mini-digit-wrap"><span class="mini-digit" id="g-secs">00</span></div>
+      <span class="mini-label">Seconds</span>
+    </div>
+  </div>
+  <div class="arrived-badge" id="arrived-badge">It has arrived. Did you figure it out? 🎁</div>
+
+  <div class="mystery-divider"></div>
+
+  <!-- Clue -->
+  <div class="clue-box" id="clue-box">
+    <div class="clue-label">Clue <span id="clue-num">1</span> of 5</div>
+    <span id="clue-text"></span>
+  </div>
+
+  <!-- Attempt pips -->
+  <div class="attempt-pips" id="pips">
+    <div class="pip" id="pip-1"></div>
+    <div class="pip" id="pip-2"></div>
+    <div class="pip" id="pip-3"></div>
+    <div class="pip" id="pip-4"></div>
+    <div class="pip" id="pip-5"></div>
+  </div>
+
+  <!-- Input -->
+  <div class="guess-row" id="guess-row">
+    <input class="guess-input" id="guess-input" type="text" placeholder="What do you think it is?" autocomplete="off" />
+    <button class="guess-btn" id="guess-btn">Guess</button>
+  </div>
+  <p class="feedback-msg" id="feedback">&nbsp;</p>
+  <button class="reveal-btn" id="reveal-btn">I give up, tell me</button>
+
+  <!-- Solved -->
+  <div class="solved-banner" id="solved-banner">You figured it out, Afzu! 🎉</div>
+  <div class="solved-sub" id="solved-sub">A little piece of tradition, made just for you. Can't wait to see you wear them.</div>
 </div>
 
 <script>
@@ -371,6 +674,191 @@
 
   tick();
   setInterval(tick, 1000);
+
+  // ── Gift arrival countdown ──────────────────────────────
+  const gDays  = document.getElementById('g-days');
+  const gHours = document.getElementById('g-hours');
+  const gMins  = document.getElementById('g-mins');
+  const gSecs  = document.getElementById('g-secs');
+  const gPrev  = { days:'', hours:'', mins:'', secs:'' };
+
+  function getGiftDate() {
+    return new Date(2026, 3, 22, 0, 0, 0); // April 22nd 2026
+  }
+
+  function giftTick() {
+    const now   = new Date();
+    const gift  = getGiftDate();
+    if (now >= gift) {
+      document.getElementById('gift-countdown').style.display = 'none';
+      document.getElementById('arrived-badge').style.display = 'block';
+      return;
+    }
+    const diff  = gift - now;
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000) / 60000);
+    const secs  = Math.floor((diff % 60000) / 1000);
+
+    function gFlip(el, key, val) {
+      const s = pad(val);
+      if (gPrev[key] !== s) {
+        el.classList.remove('flip');
+        void el.offsetWidth;
+        el.classList.add('flip');
+        el.textContent = s;
+        gPrev[key] = s;
+      }
+    }
+    gFlip(gDays,  'days',  days);
+    gFlip(gHours, 'hours', hours);
+    gFlip(gMins,  'mins',  mins);
+    gFlip(gSecs,  'secs',  secs);
+  }
+  giftTick();
+  setInterval(giftTick, 1000);
+
+  // ── Gift riddle game ────────────────────────────────────
+  const CLUES = [
+    // 1 — completely abstract, no physical hints
+    "I carry no weight, yet I have been carried across centuries. I was present at every celebration you've never attended. I exist in symmetry — always two, never alone — yet each of me has only ever known one place in this world.",
+
+    // 2 — hints at motion and music, still abstract
+    "A poet once said I sing when no one asks me to. A dancer once said I make her feel complete. I am ancient craft and modern grace. I have traveled the Silk Road, not as cargo, but as desire.",
+
+    // 3 — hints at metal, gravity, circularity
+    "A goldsmith poured a lifetime of patience into my making. I obey gravity, but I do so elegantly. I am circles within circles — a geometry that only makes sense when suspended in air. I chime, but I am not a bell.",
+
+    // 4 — location hint, subtle
+    "I live at the precise boundary between the world and you. Not where you speak, not where you see — somewhere quieter. I frame your face from the outside. When you move, I move. When you laugh, I agree.",
+
+    // 5 — cultural reference, very close but still requires knowledge
+    "Bollywood has sung my name in the rain. Your grandmother almost certainly owns a pair. I am the whisper of a tradition that never went out of fashion. I am always gold at heart, no matter what I'm made of."
+  ];
+
+  const ANSWERS = ['jhumka','jhumkas','jhumki','jhumkha','jhumkhas',
+                   'earring','earrings','earing','earings',
+                   'ear ring','ear rings'];
+
+  let currentClue   = 0;
+  let wrongAttempts = 0;
+  const MAX_WRONG   = 5;
+
+  function renderClue() {
+    document.getElementById('clue-num').textContent = currentClue + 1;
+    const el = document.getElementById('clue-text');
+    el.style.opacity = '0';
+    setTimeout(() => {
+      el.textContent = CLUES[currentClue];
+      el.style.transition = 'opacity 0.5s';
+      el.style.opacity    = '1';
+    }, 120);
+  }
+
+  function markPip(n) {
+    const pip = document.getElementById('pip-' + n);
+    if (pip) pip.classList.add('used');
+  }
+
+  function setFeedback(msg, type) {
+    const el = document.getElementById('feedback');
+    el.textContent  = msg;
+    el.className    = 'feedback-msg ' + (type || '');
+  }
+
+  function showSolved() {
+    document.getElementById('guess-row').style.display    = 'none';
+    document.getElementById('feedback').style.display     = 'none';
+    document.getElementById('reveal-btn').style.display   = 'none';
+    document.getElementById('pips').style.display         = 'none';
+    document.getElementById('clue-box').style.display     = 'none';
+    document.getElementById('solved-banner').style.display = 'block';
+    document.getElementById('solved-sub').style.display   = 'block';
+    launchConfetti();
+  }
+
+  function handleGuess() {
+    const raw   = document.getElementById('guess-input').value.trim().toLowerCase();
+    const input = document.getElementById('guess-input');
+    if (!raw) return;
+
+    if (ANSWERS.includes(raw)) {
+      showSolved();
+      return;
+    }
+
+    // wrong
+    wrongAttempts++;
+    markPip(wrongAttempts);
+    input.value = '';
+    input.classList.remove('shake');
+    void input.offsetWidth;
+    input.classList.add('shake');
+
+    if (wrongAttempts < MAX_WRONG) {
+      currentClue = wrongAttempts; // next clue
+      const hints = [
+        'Not quite... here\'s another clue.',
+        'Hmm, think deeper.',
+        'Still no — keep going.',
+        'So close? Or so far? One more clue.',
+      ];
+      setFeedback(hints[wrongAttempts - 1] || 'Try again.', 'wrong');
+      renderClue();
+    } else {
+      // last wrong attempt — all clues shown, offer reveal
+      currentClue = MAX_WRONG - 1;
+      setFeedback('All clues used. Give up?', 'wrong');
+      document.getElementById('guess-btn').disabled = false;
+      document.getElementById('reveal-btn').style.display = 'inline-block';
+    }
+  }
+
+  document.getElementById('guess-btn').addEventListener('click', handleGuess);
+  document.getElementById('guess-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') handleGuess();
+  });
+
+  document.getElementById('reveal-btn').addEventListener('click', function() {
+    document.getElementById('guess-row').style.display    = 'none';
+    document.getElementById('feedback').style.display     = 'none';
+    document.getElementById('reveal-btn').style.display   = 'none';
+    document.getElementById('pips').style.display         = 'none';
+    document.getElementById('clue-box').style.display     = 'none';
+    document.getElementById('solved-banner').textContent  = 'It\'s a Jhumka set, Afzu! 💛';
+    document.getElementById('solved-banner').style.display = 'block';
+    document.getElementById('solved-sub').textContent     = 'Traditional, timeless, and made for someone as beautiful as you.';
+    document.getElementById('solved-sub').style.display   = 'block';
+  });
+
+  // initial render
+  renderClue();
+
+  // ── Confetti burst on solve ─────────────────────────────
+  function launchConfetti() {
+    const colors = ['#f43f6e','#fda4af','#f59e0b','#fde68a','#fff'];
+    for (let i = 0; i < 80; i++) {
+      const c = document.createElement('div');
+      const size = Math.random() * 8 + 4;
+      Object.assign(c.style, {
+        position:   'fixed',
+        left:       Math.random() * 100 + 'vw',
+        top:        '-20px',
+        width:      size + 'px',
+        height:     size + 'px',
+        borderRadius: Math.random() > 0.5 ? '50%' : '2px',
+        background: colors[Math.floor(Math.random() * colors.length)],
+        opacity:    '0.9',
+        zIndex:     '999',
+        animation:  `fall ${(Math.random()*2.5+1.5).toFixed(1)}s linear forwards`,
+        animationDelay: (Math.random() * 0.8).toFixed(2) + 's',
+        transform:  `rotate(${Math.random()*360}deg)`,
+        pointerEvents: 'none',
+      });
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 4500);
+    }
+  }
 </script>
 </body>
 </html>
